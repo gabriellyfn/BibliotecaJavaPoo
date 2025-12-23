@@ -22,14 +22,24 @@ public class Livro { // Classe Livro e a seguir seus atributos
     public void addLivro(String titulo, String autor) { // Coloquei parametros pq a informacao vem de fora nesse momento
         this.titulo = titulo;
         this.autor = autor;
-        System.out.println("Livro cadastrado com sucesso! ");
     }
-    public void emprestar() { // Não passe como parâmetro algo que já é atributo
+    public boolean emprestar() { // Não passe como parâmetro algo que já é atributo
         // Usa atributos da classe → não precisa parâmetro
         if (! disponivel){
             System.out.println("Livro Indisponível. ");
+            return false;
         } else {
+            this.disponivel = false;
             System.out.println("Livro Disponível. ");
+            return true;
         }
     }
+    @Override // Uma instrução para o compilador
+    public String toString() {
+        return "Título: " + this.titulo + " | Autor: " + this.autor;
+    }
+    public String getTitulo() {
+        return this.titulo;
+    }
+
 }
